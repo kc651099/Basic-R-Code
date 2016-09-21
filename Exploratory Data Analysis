@@ -1,0 +1,115 @@
+							
+
+Exploratory Data analysis using R	
+1	INTRODUCTION
+For this assignment our aim is to describe the data set using R commands. 
+Below are the different types of functions that are applied on the mtcars dataset, click here for each function.
+Loading data into R
+Running Summary Functions on data set
+Questions
+
+2	LOADING DATA INTO R
+Load the dataset into R & verify data
+attach(mtcars)      #converts dataframe to data.table
+print(mtcars)        #allows you to view the first & last few lines  
+ 
+
+
+BACK TO MENU
+
+
+
+
+
+
+3	SUMMARY FUNCTIONS
+Summary of the data Set
+Summary (mtcars) 		#finding summary of the dataset.
+
+ 
+From summary we could see that all the minimum, maximum, Mean, Median, first Quad and 3rd Quad values for respective column.
+Below are the details about the data set.
+mpg	 Miles/(US) gallon
+Miles per Gallon columns gives the number of miles per gallon for each car model.
+cyl	 Number of cylinders
+Cyl value gives us the number of cylinders for each car model.
+disp	 Displacement (cu.in.)
+The displacement figure represents the total air displaced by the pistons in all of an engine's cylinders and is expressed in liters, cubic centimeters or cubic inches. In our data set it is in cubic inches.
+hp	 Gross horsepower
+	Horse power is the measurement of power of an engine. 
+
+drat	 Rear axle ratio
+	The variable drat (Rear axle ratio) is the ratio of the angular velocity of the input gear to the angular velocity of the output gear.
+wt	 Weight (1000 lbs)
+qsec	 1/4 mile time
+vs	 V/S
+The variable vs indicates whether the car has a V engine or a straight engine.
+am	 Transmission (0 = automatic, 1 = manual)
+	Indication of car is automatic or manual transmission. 
+gear	 Number of forward gears
+	Number of gears in a car.
+carb	 Number of carburetors
+A carburetor (carb) is a device that blends air and fuel for an internal combustion engine.
+
+Below are the some of the interpretations from summary data.
+Maximum mpg given by a car is 33.90
+Minimum No of cylinders for a car is 4.0
+Average horse power: 146.0
+Maximum gears for a car is: 5.0
+
+
+
+
+More functions 
+1)	Maximum horse power for each cylinder car
+a.	 
+
+Here mtcarDT is the data table of mtcars data. We are retrieving all the 4 cylinder cars and apply lapply function to get the max horse power.
+
+BACK TO MENU
+
+
+
+4	QUESTIONS
+
+Q1: Co-Relation between Miles per Gallon and Car Cylinders
+Co-Relation: 
+
+cor(mtcars$mpg,mtcars$cyl)		#This gives the value of co-relation between number of cylynders and mpg value
+
+ 
+Below value -0.852162 shows that it has negative relation between them i.e. if number of cylinders are high the mpg value decreases. 
+Co-Relation Test: 
+Let us test the correlation using cor.test command using pearson’s method of co-relation (default test).
+
+ 
+From this test we could see that MPG value decreases by 85% with number of cylinders increase this is using pearson’s method of co-relation.
+
+Boxplot of mpg ~ Car Cylinders 
+boxplot(mpg~cyl,data=mtcars, main="Car Milage Data",xlab="Number of Cylinders", ylab="Miles Per Gallon")
+ 
+Observation:
+From this box plot we could see how the mpg value is varying based on number of cylinders. Also we could see mpg value is going down upon number of cylinders increased.  Cylinders with 4 are having high mileage.
+
+
+
+
+
+
+Q2: Does MPG values effects Vs Transmission Type
+For testing this, I am trying to graph them in two different ways. One is using plot and another using box plot.
+Plot mpg Vs transmission Type
+plot(mpg ~ am, data = mtcars, ylab = "Miles per Gallon")
+
+ 
+
+Box Plot mpg Vs transmission Type
+boxplot(mpg ~ am, data = mtcars, ylab = "Miles per Gallon", names = c("automatic", "manual"))
+
+ 
+
+Observation:
+From this plot/Boxplot we could see transmission 0 (automatic) mpg is lesser when considered with transmission 1 (manual). Miles per gallon is high for Manual cars. 
+
+BACK TO MENU
+
